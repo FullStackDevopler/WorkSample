@@ -1,0 +1,95 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med Exam</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'image/logo-white.png' %}">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="header-logo">
+                        <a href="{% url 'dashboard' %}"><img src="{% static 'image/logo-white.png' %}" class="img-fluid"></a>
+                    </div></div>
+                    <div class="col-lg-8 col-md-8 col-sm-12 d-flex justify-content-end align-items-center">
+                    <div class="suscribe d-flex">
+                        <a href="{% url 'search' %}" class="medical-btn" type="button">Smart Search</a>
+                        <a href="{% url 'show_plans' %}" class="dashboard-btn" type="button">SUBSCRIPTION</a>
+                        <div class="dropdown">
+                            <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{name}}
+                            </button>
+                            <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
+                                <!-- -->
+                                <div class="dropdown-divider"></div>
+                                <li><a class="dropdown-item text-center" href="{% url 'logout' %}"><img src="{% static 'image/logout.png' %}"
+                                            class="dropdown-icon">Logout</a></li>
+                            </ul>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- header-top-end -->
+        <!-- header-bottom-start -->
+        <div class="header-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container p-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'dashboard' %}active{% endif %}" aria-current="page" href="{%url 'dashboard' %}" ><img src="{% static 'image/dashboard.png' %}"
+                                    class="dropdown-icon">Dashboard</a>
+                            <a class="nav-link {% if request.resolver_match.view_name == 'terms_and_conditions' %}active{% endif %}" href="{%url 'terms_and_conditions' %}"><img src=" {%static 'image/termsconditions.png' %}"
+                                    class="dropdown-icon">Terms & Conditions</a>
+                            <a class="nav-link {% if request.resolver_match.view_name == 'privacypolicy' %}active{% endif %}" href="{%url 'privacypolicy' %}"><img src="{%static 'image/privacypolicy.png' %}"
+                                    class="dropdown-icon">Privacy Policy</a>
+                            <a class="nav-link {% if request.resolver_match.view_name == 'contactus'%}active{% endif %}" href="{%url 'contactus' %}"><img src="{%static 'image/contactus.png' %}"
+                                    class="dropdown-icon">Contact Us</a>
+                            <a class="nav-link {% if request.resolver_match.view_name == 'setting' or request.resolver_match.view_name == 'user_change_password' %}active{% endif %}"  href="{%url 'setting' %}"><img src="{%static 'image/seeting.png' %}"
+                                    class="dropdown-icon">Settings</a>
+                        </div>
+                    </div>
+                    <div class="nav-button">
+                        <button type="button" class="dashboard-btn" data-bs-toggle="modal"
+                            data-bs-target="#examplemodal1">Reset</button>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+     <!-- reset-Modal -->
+     <div class="modal fade" id="examplemodal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 class="delete-heading nova-font">Are you sure you want to reset<br> all the questions?</h4> 
+                </div>
+                <div class="modal-footer d-flex">
+                   <a href="{%url 'reset_result' %}"><button type="button" class="modal-delete-yes">Yes</button> </a> 
+                    <button type="button" class="modal-delete-no" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- test-Modal -->
+
+</body>
+</html>
